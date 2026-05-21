@@ -129,10 +129,10 @@ with k2:
         <div class="metric-sub">{n_attrition:,} karyawan keluar</div>
     </div>""", unsafe_allow_html=True)
 with k3:
-    val = f"Rp {avg_income:,.0f}" if avg_income else "—"
+    val = f"Rp {avg_income/1000:,.1f}K" if avg_income else "—"
     st.markdown(f"""<div class="metric-card">
         <div class="metric-label">Rata-rata Gaji/Bulan</div>
-        <div class="metric-value" style="font-size:22px">{val}</div>
+        <div class="metric-value">{val}</div>
         <div class="metric-sub">&nbsp;</div>
     </div>""", unsafe_allow_html=True)
 with k4:
