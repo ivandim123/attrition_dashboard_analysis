@@ -11,8 +11,8 @@ st.set_page_config(
     layout="wide"
 )
 
-# Set style
-sns.set(style="whitegrid")
+# Set style (menggunakan set_theme untuk kompatibilitas versi terbaru)
+sns.set_theme(style="whitegrid")
 
 # Judul Dashboard
 st.title("Dashboard HR Analytics")
@@ -20,11 +20,10 @@ st.markdown("Dashboard ini menampilkan visualisasi data karyawan berdasarkan ber
 
 # Create sample data if file doesn't exist (untuk testing)
 @st.cache_data
-@st.cache_data
 def load_or_create_sample_data():
     try:
         current_dir = os.path.dirname(os.path.abspath(__file__))
-        file_path = os.path.join(current_dir, "employee_data_cleaned.csv")  # ✅ Perbaikan di sini
+        file_path = os.path.join(current_dir, "employee_data_cleaned.csv")
         emp_df = pd.read_csv(file_path)
         st.success("Data berhasil dimuat dari file CSV")
 
@@ -45,7 +44,7 @@ def load_or_create_sample_data():
     except FileNotFoundError:
         st.warning("File 'employee_data_cleaned.csv' tidak ditemukan. Menggunakan data sampel untuk demonstrasi.")
 
-        # Buat data sampel (seperti sebelumnya)
+        # Buat data sampel
         np.random.seed(42)
         n = 1000
         genders = ["Male", "Female"]
@@ -150,8 +149,10 @@ try:
                     fig1, ax1 = plt.subplots()
                     value_counts = df_0[selected_feature].value_counts()
                     if not value_counts.empty:
+                        # Menambahkan parameter hue untuk menghindari warning Seaborn
                         sns.countplot(y=selected_feature, data=df_0, 
                                     order=value_counts.index, 
+                                    hue=selected_feature, legend=False,
                                     palette="Blues_d", ax=ax1)
                         ax1.set_title("No Attrition")
                         ax1.set_xlabel("Jumlah")
@@ -168,8 +169,10 @@ try:
                     fig2, ax2 = plt.subplots()
                     value_counts = df_1[selected_feature].value_counts()
                     if not value_counts.empty:
+                        # Menambahkan parameter hue untuk menghindari warning Seaborn
                         sns.countplot(y=selected_feature, data=df_1, 
                                     order=value_counts.index, 
+                                    hue=selected_feature, legend=False,
                                     palette="Reds_d", ax=ax2)
                         ax2.set_title("Yes Attrition")
                         ax2.set_xlabel("Jumlah")
@@ -180,8 +183,6 @@ try:
                 else:
                     st.info("Tidak ada data untuk 'Yes Attrition'")
         
-        # Grafik perbandingan langsung telah dihapus sesuai permintaan
-                
 except Exception as e:
     st.error(f"Error saat membuat visualisasi: {e}")
     st.write("Detail error:")
