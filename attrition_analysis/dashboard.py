@@ -28,11 +28,15 @@ st.markdown("""
         padding: 20px 24px;
         border-left: 5px solid #4A90D9;
         margin-bottom: 8px;
+        min-height: 110px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
     .metric-card.danger { border-left-color: #E05C5C; }
     .metric-label { font-size: 13px; color: #6c757d; margin-bottom: 4px; }
     .metric-value { font-size: 28px; font-weight: 700; color: #1a1a2e; }
-    .metric-sub   { font-size: 12px; color: #6c757d; margin-top: 2px; }
+    .metric-sub   { font-size: 12px; color: #6c757d; margin-top: 2px; min-height: 18px; }
     section[data-testid="stSidebar"] { background: #1a1a2e; }
     section[data-testid="stSidebar"] * { color: #e0e0e0 !important; }
 </style>
@@ -116,6 +120,7 @@ with k1:
     st.markdown(f"""<div class="metric-card">
         <div class="metric-label">Total Karyawan</div>
         <div class="metric-value">{total:,}</div>
+        <div class="metric-sub">&nbsp;</div>
     </div>""", unsafe_allow_html=True)
 with k2:
     st.markdown(f"""<div class="metric-card danger">
@@ -128,12 +133,14 @@ with k3:
     st.markdown(f"""<div class="metric-card">
         <div class="metric-label">Rata-rata Gaji/Bulan</div>
         <div class="metric-value" style="font-size:22px">{val}</div>
+        <div class="metric-sub">&nbsp;</div>
     </div>""", unsafe_allow_html=True)
 with k4:
     val = f"{avg_tenure:.1f} thn" if avg_tenure else "—"
     st.markdown(f"""<div class="metric-card">
         <div class="metric-label">Rata-rata Lama Kerja</div>
         <div class="metric-value">{val}</div>
+        <div class="metric-sub">&nbsp;</div>
     </div>""", unsafe_allow_html=True)
 
 st.divider()
