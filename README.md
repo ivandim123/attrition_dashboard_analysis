@@ -51,7 +51,7 @@ Di sini saya menggunakan streamlit untuk membuat dashboard. Saya juga sudah depl
 Berikut link github dari aplikasi ini:  
 [Github Dashboard](https://github.com/ivandim123/DS_PA)  
 Berikut link dashboard dari aplikasi ini:  
-[Streamlit Dashboard]((https://attritiondashboardanalysis-fazrepsyhdqrzngirwdnvd.streamlit.app/))  
+[Streamlit Dashboard](https://attritiondashboardanalysis-fazrepsyhdqrzngirwdnvd.streamlit.app/)  
 
 ## Business Dashboard
 Dashboard yang sudah saya buat memiliki beberapa fitur sebagai berikut:
